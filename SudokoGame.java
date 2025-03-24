@@ -15,43 +15,7 @@ class Sudoko {
 
     int remove;
 
-    Sudoko(int size) {
-
-        this.size = size;
-
-        arr = new String[size][size];
-
-        ans = new String[size][size];
-
-
-        getLayout();
-
-        selectLvl();
-
-        removeEle();
-
-        grid();
-
-        giveVal();
-
-        if (checkSolution()) {
-
-            String party = "\uD83C\uDF89";
-
-            System.out.println("CONGRATS YO " + party);
-
-        }
-
-         else {
-
-            String crying= "\uD83D\uDE22";
-
-            System.out.println("Solution is Wrong " + crying);
-
-        }
-
-    }
-
+   
     void getLayout() {
 
 
@@ -110,6 +74,9 @@ class Sudoko {
         return true;
 
     }
+
+    
+
 
 
     void selectLvl() {
@@ -210,6 +177,43 @@ class Sudoko {
         }
     }
 
+
+    Sudoko(int size) {
+
+        this.size = size;
+
+        arr = new String[size][size];
+
+        ans = new String[size][size];
+
+
+        getLayout();
+
+        selectLvl();
+
+        removeEle();
+
+        grid();
+
+        giveVal();
+
+        if (checkSolution()) {
+
+            String party = "\uD83C\uDF89";
+
+            System.out.println("CONGRATS YO " + party);
+
+        }
+
+         else {
+
+            String crying= "\uD83D\uDE22";
+
+            System.out.println("Solution is Wrong " + crying);
+
+        }
+
+    }
     
     
 
