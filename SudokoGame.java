@@ -32,7 +32,7 @@ class Sudoko {
 
         grid();
 
-        giveValue();
+        giveVal();
 
         if (checkSolution()) {
 
@@ -72,8 +72,6 @@ class Sudoko {
             }
         }
 
-        
-       
         for (int i = 0; i < size; i++) {
 
             for (int j = 0; j < size; j++) {
@@ -148,31 +146,7 @@ class Sudoko {
         }
     }
 
-    void removeEle() {
-
-        rmvIndex = new int[2 * remove];
-
-        int count = 0;
-
-
-        while (count < remove) {
-
-            int i = (int) (System.nanoTime() % size);
-
-            int j = (int) (System.nanoTime() % size);
-
-            if (arr[i][j] != null) {
-
-                arr[i][j] = " ";
-
-                rmvIndex[2 * count] = i;
-
-                rmvIndex[2 * count + 1] = j;
-
-                count++;
-            }
-        }
-    }
+   
 
     void grid() {
         StringBuilder s = new StringBuilder();
@@ -210,7 +184,78 @@ class Sudoko {
 
     }
 
-    void giveValue() {
+    void removeEle() {
+
+        rmvIndex = new int[2 * remove];
+
+        int count = 0;
+
+
+        while (count < remove) {
+
+            int i = (int) (System.nanoTime() % size);
+
+            int j = (int) (System.nanoTime() % size);
+
+            if (arr[i][j] != null) {
+
+                arr[i][j] = " ";
+
+                rmvIndex[2 * count] = i;
+
+                rmvIndex[2 * count + 1] = j;
+
+                count++;
+            }
+        }
+    }
+
+    
+    
+
+    public static void main(String[] args) {
+
+
+        if (args.length == 0) {
+
+
+            System.out.println("ENTER THE SIZE OF THE GRID AT COMMAND-LINE ");
+
+
+            return;
+        }
+
+        int size = Integer.parseInt(args[0]);
+
+        if (size < 2) {
+            System.out.println("SIZE SHOULD BE AT LEAST 2 ");
+
+            return;
+
+        }
+
+        new Sudoko(size);
+    }
+
+
+    boolean checkSolution() {
+
+        for (int i = 0; i < size; i++) {
+
+            for (int j = 0; j < size; j++) {
+
+                if (arr[i][j] == null || !arr[i][j].equals(ans[i][j])) {
+
+                    return false;
+
+
+                }
+            }
+        }
+        return true;
+    }
+
+    void giveVal() {
         Scanner scanner = new Scanner(System.in);
 
 
@@ -277,44 +322,4 @@ class Sudoko {
         }
     }
 
-    boolean checkSolution() {
-
-        for (int i = 0; i < size; i++) {
-
-            for (int j = 0; j < size; j++) {
-
-                if (arr[i][j] == null || !arr[i][j].equals(ans[i][j])) {
-
-                    return false;
-
-
-                }
-            }
-        }
-        return true;
-    }
-
-    public static void main(String[] args) {
-
-
-        if (args.length == 0) {
-
-
-            System.out.println("ENTER THE SIZE OF THE GRID AT COMMAND-LINE ");
-
-
-            return;
-        }
-
-        int size = Integer.parseInt(args[0]);
-
-        if (size < 2) {
-            System.out.println("SIZE SHOULD BE AT LEAST 2 ");
-
-            return;
-
-        }
-
-        new Sudoko(size);
-    }
 }
